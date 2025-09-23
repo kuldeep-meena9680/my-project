@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kuldeep Meena - Portfolio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../asset/logo/kuldeepmeenalogo.png">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed; top:0; width:100%;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:0px 50px; background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(12px); box-shadow:0 4px 12px rgba(0,0,0,0.08); z-index:1000;
+    }
+    .navbar .logo img { width:120px; transition:0.3s; }
+    .nav-links {
+      display:flex; align-items:center; transition:0.3s;
+    }
+    .nav-links a {
+      margin-left:28px; text-decoration:none; font-weight:600; color:#fdf907;
+      position:relative; transition:0.3s; font-size:15px;
+    }
+    .nav-links a::after {
+      content:""; position:absolute; width:0%; height:2px; background:dodgerblue;
+      bottom:-5px; left:0; transition:0.3s;
+    }
+    .nav-links a:hover::after { width:100%; }
+
+    /* Hamburger */
+    .hamburger { display:none; font-size:28px; cursor:pointer; color:#222; }
+
+    /* Hero Section */
+    .hero {
+      height:100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('../asset/images/Protofolio BG Image.jpg') center/cover no-repeat;
+      display:flex; flex-direction:column; justify-content:center; align-items:center;
+      text-align:center; color:#fff; padding:0 20px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    .hero h1 { font-size:3em; margin-bottom:15px; }
+    .hero p { font-size:1.2em; margin-bottom:25px; }
+    .btn {
+      padding:12px 25px; background:#ffd700; color:#333; font-weight:bold; border-radius:30px;
+      text-decoration:none; transition:0.3s;
+    }
+    .btn:hover { background:#ffb700; }
+
+    /* Sections */
+    .section { padding:80px 20px; max-width:1100px; margin:auto; }
+    .section h2 {
+      text-align:center; color:#004aad; margin-bottom:40px; font-size:2.2em; position:relative;
+    }
+    .section h2::after {
+      content:""; width:60px; height:3px; background:#ffd700;
+      position:absolute; left:50%; bottom:-10px; transform:translateX(-50%);
+    }
+
+    /* About */
+    .about {
+      display:flex; align-items:center; gap:40px; flex-wrap:wrap; justify-content:center;
+    }
+    .profile-wrapper {
+      position:relative; width:280px; height:280px; border-radius:50%;
+      display:flex; justify-content:center; align-items:center; overflow:visible;
+    }
+    #particles-js {
+      position:absolute; top:-80px; left:-80px; width:440px; height:440px; z-index:0;
+    }
+    .profile-wrapper img {
+      position:relative; width:280px; height:280px; border-radius:50%; border:5px solid #004aad;
+      box-shadow:0 5px 20px rgba(0,0,0,0.2); z-index:1; object-fit:cover; animation: zoomIn 1.2s ease forwards;
+    }
+    .about-text {
+      flex:1; opacity:0; transform:translateX(40px); animation: slideIn 1.2s ease forwards 0.5s;
+    }
+
+    /* Projects */
+    .projects { display:flex; flex-wrap:wrap; gap:25px; justify-content:center; }
+    .project-card {
+      width:300px; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .project-card:hover { transform:translateY(-8px); }
+    .project-card img { width:100%; height:200px; object-fit:cover; }
+    .project-card .details { padding:20px; }
+    .project-card h3 { margin-bottom:10px; color:#004aad; }
+    .project-card p { font-size:14px; color:#555; }
+    .project-card a {
+      display:inline-block; margin-top:10px; padding:8px 15px; background:#004aad; color:#fff; border-radius:6px;
+      text-decoration:none; transition:0.3s;
+    }
+    .project-card a:hover { background:#003580; }
+
+    /* Contact */
+    .contact { text-align:center; }
+    .contact p { margin-bottom:20px; }
+    .contact a { margin:0 10px; font-size:24px; color:#004aad; transition:0.3s; }
+    .contact a:hover { color:#ffd700; }
+
+    /* ==================== FOOTER STYLES ==================== */
+    :root{
+      --primary:#0d2b52;
+      --accent:#ffcc00;
+      --glass-bg: rgba(13,43,82,0.85);
+      --muted: rgba(255,255,255,0.85);
+    }
+
+    .footer {
+      position: relative;
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px) saturate(120%);
+      color: #fff;
+      padding: 110px 20px 60px;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 10px 40px rgba(3,9,23,0.6) inset;
+    }
+
+    /* Animated Waves */
+    .waves {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 120px;
+      pointer-events: none;
+      z-index: 3;
+      overflow: hidden;
+    }
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 160px;
+      background: radial-gradient(60% 50% at 10% 50%, rgba(255,255,255,0.06), rgba(255,255,255,0)),
+                  linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      border-radius: 45%;
+      transform-origin: center bottom;
+      filter: blur(6px);
+      animation: waveMove 10s linear infinite;
+    }
+    .wave#w1{ bottom:-40px; left:0; opacity:0.55; animation-duration:10s; transform:scaleX(1.1) }
+    .wave#w2{ bottom:-20px; left:-30%; opacity:0.35; animation-duration:14s; transform:scaleX(1.25) }
+    .wave#w3{ bottom:-10px; left:-10%; opacity:0.22; animation-duration:20s; transform:scaleX(1.45) }
+    .wave#w4{ bottom:0px; left:-50%; opacity:0.12; animation-duration:26s; transform:scaleX(1.9) }
+
+    @keyframes waveMove {
+      0%{ transform: translateX(0) rotate(0deg); }
+      100%{ transform: translateX(-50%) rotate(0deg); }
+    }
+
+    /* Footer main grid */
+    .footer-container{
+      max-width:1200px;
+      margin: 0 auto;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap:34px;
+      position:relative;
+      z-index:6;
+    }
+
+    .footer-col { padding:6px 4px; }
+    .footer-col.about .logo { font-size:28px; margin:0 0 6px 0; display:flex; align-items:center; gap:10px; }
+    .logo-emoji{ font-size:20px; transform:translateY(-2px); }
+
+    /* Animated gradient text */
+    .gradient-text{
+      background: linear-gradient(270deg, var(--accent), #ff6b6b, #00e0e0, #a76bff);
+      background-size: 800% 800%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientAnim 10s linear infinite;
+      font-weight:700;
+      letter-spacing:0.2px;
+    }
+    @keyframes gradientAnim {
+      0%{ background-position:0% 50% }
+      50%{ background-position:100% 50% }
+      100%{ background-position:0% 50% }
+    }
+
+    .footer-col p{ color:var(--muted); margin:8px 0 0 0; font-size:14px; line-height:1.7; }
+    .footer-col h3{ margin:0 0 10px 0; font-size:16px; color:#fff; position:relative; }
+    .footer-col h3::after{ content:''; display:block; width:42px; height:3px; background:var(--accent); margin-top:8px; border-radius:3px; }
+
+    /* Lists */
+    .footer-col ul{ list-style:none; padding:0; margin:6px 0 0 0; }
+    .footer-col li{ margin:10px 0; font-size:14px; display:flex; align-items:center; gap:10px; color:var(--muted); }
+    .footer-col li i{ color:var(--accent); min-width:18px; text-align:center;}
+
+    /* Social icons */
+    .social-icons{ margin-top:12px; display:flex; gap:10px; align-items:center; }
+    .social-icons a{
+      display:inline-grid; place-items:center;
+      width:44px;height:44px;border-radius:50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      color:#fff; text-decoration:none; position:relative; overflow:hidden; transition: transform .25s ease, box-shadow .25s ease;
+      box-shadow: 0 6px 18px rgba(2,8,20,0.3);
+    }
+    .social-icons a i{ font-size:16px; }
+    .social-icons a:hover{ transform:translateY(-6px) scale(1.06); box-shadow: 0 14px 34px rgba(0,0,0,0.6), 0 0 18px rgba(255,204,0,0.18); color:var(--primary); background:var(--accent); }
+    .social-icons a::after{
+      content:''; position:absolute; width:12px; height:12px; background:#fff; border-radius:50%; left:50%; top:120%; transform:translateX(-50%); opacity:0; transition: all .45s cubic-bezier(.2,.9,.3,1);
+      filter:blur(.2px);
+    }
+    .social-icons a:hover::after{ top:-18%; opacity:0.9; transform: translateX(-50%) scale(1.2); }
+
+    /* Newsletter */
+    .newsletter { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.04); }
+    .newsletter p{ margin:0 0 10px 0; color:var(--muted); }
+    .newsletter form { display:flex; gap:8px; align-items:center; }
+    .newsletter input[type="email"]{
+      flex:1; padding:12px 14px; border-radius:999px; border:none; outline:none;
+      background: rgba(255,255,255,0.04); color:#fff; font-size:14px; transition: box-shadow .2s;
+    }
+    .newsletter input[type="email"]::placeholder{ color: rgba(255,255,255,0.55); }
+    .newsletter button.subscribe{
+      background: linear-gradient(90deg, var(--accent), #ff7b7b); color:var(--primary); padding:10px 16px; border:none; border-radius:999px; cursor:pointer; font-weight:600;
+      display:flex; align-items:center; gap:8px; box-shadow: 0 8px 20px rgba(255,204,0,0.12); transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .newsletter button.subscribe:hover{ transform:translateY(-4px); box-shadow: 0 18px 44px rgba(255,204,0,0.18); }
+
+    /* Footer bottom */
+    .footer-bottom{ text-align:center; margin-top:28px; font-size:13px; color:rgba(255,255,255,0.85); position:relative; z-index:6; }
+
+    /* Scroll-to-top button */
+    .scroll-top{
+      position:fixed; right:24px; bottom:24px; z-index:9999; width:50px;height:50px;border-radius:50%; border:none; display:grid; place-items:center; cursor:pointer;
+      background: linear-gradient(180deg,var(--accent), #ffd36a); color:var(--primary); font-size:18px; box-shadow: 0 8px 28px rgba(255,204,0,0.18);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .scroll-top:hover{ transform:scale(1.12); box-shadow: 0 18px 48px rgba(255,204,0,0.28); }
+
+    /* Toast */
+    .toast{
+      position:fixed; left:50%; transform:translateX(-50%); bottom:90px; z-index:99999;
+      background: linear-gradient(90deg,#00d27a,#28a7ff); color:#fff; padding:12px 18px; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.5); display:flex; gap:10px; align-items:center; font-weight:600;
+      opacity:0; pointer-events:none; transition:all .35s;
+    }
+    .toast.show{ opacity:1; bottom:110px; pointer-events:auto; }
+
+    /* Confetti */
+    .confetti-wrapper { position:fixed; left:50%; transform:translateX(-50%); bottom:140px; z-index:99998; pointer-events:none; width:260px; height:120px; overflow:visible; }
+
+    /* Footer responsive */
+    @media (max-width:720px){
+      .footer{ padding:90px 16px 110px; }
+      .waves{ top:-60px; height:90px; }
+      .scroll-top{ right:14px; bottom:18px; }
+    }
+
+    /* Animations */
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes zoomIn { from { transform: scale(0.5); opacity:0; } to { transform: scale(1); opacity:1; } }
+    @keyframes slideIn { from { opacity:0; transform:translateX(40px); } to { opacity:1; transform:translateX(0); } }
+
+    /* Responsive */
+    @media (max-width:992px) { .hero h1{font-size:2.5em;} .hero p{font-size:1em;} }
+    @media (max-width:768px){
+      .hamburger { display:block; }
+      .nav-links { flex-direction:column; position:absolute; top:60px; right:0; background:rgba(0,0,0,0.95); width:220px; border-radius:10px; overflow:hidden; max-height:0; opacity:0; transition:max-height 0.4s ease, opacity 0.4s ease; }
+      .nav-links.show { max-height:350px; opacity:1; }
+      .nav-links a { padding:12px 0; text-align:center; font-size:15px; border-bottom:1px solid rgba(255,255,255,0.1); }
+      .nav-links a:last-child { border-bottom:none; }
+      .about { flex-direction:column; text-align:center; }
+      .profile-wrapper { margin-bottom:20px; }
+      .projects { flex-direction:column; align-items:center; }
+      .project-card { width:90%; }
+    }
+    @media (max-width:480px){
+      .navbar .logo img{width:100px;}
+      .hero h1{font-size:1.8em;}
+      .hero p{font-size:0.9em;}
+      .btn{padding:8px 16px; font-size:13px;}
+      .profile-wrapper img{width:220px;height:220px;}
+      .about-text{font-size:14px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><img src="../asset/logo/kuldeepmeenalogo.png" alt="Logo"></div>
+    <i class="fas fa-bars hamburger" onclick="toggleMenu()"></i>
+    <div class="nav-links">
+      <a href="../src/kuldeepmeena.html">Home</a>
+      <a href="../src/about.html">About</a>
+      <a href="../src/service.html">Services</a>
+      <a href="../src/portfolio.html">Portfolio</a>
+      <a href="../src/contact.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Hi, I'm Kuldeep 👋</h1>
+    <p>A Passionate Web Developer | Turning Ideas into Reality</p>
+    <a href="#projects" class="btn">View My Work</a>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <div class="about">
+      <div class="profile-wrapper">
+        <div id="particles-js"></div>
+        <img src="../asset/images/kuldip.png" alt="Kuldeep Meena">
+      </div>
+      <div class="about-text">
+        <p>Hello! I'm <strong>Kuldeep Meena</strong>, a creative and passionate web developer specializing in modern and responsive websites. I love solving problems with clean, efficient code and designing user-friendly digital experiences.</p>
+        <p>My expertise includes HTML, CSS, JavaScript, and modern frameworks. Currently, I'm working on building full-stack skills to create complete digital solutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <h2>My Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="../asset/images/Protofolio1.avif" alt="Project 1">
+        <div class="details">
+          <h3>Portfolio Website</h3>
+          <p>A responsive personal portfolio showcasing my skills and projects.</p>
+          <a href="../asset/demo project/FolioOne/index.html" target="_blank">Live Demo</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="../asset/images/Protofolio2.jpeg" alt="Project 2">
+        <div class="details">
+          <h3>E-Commerce Site</h3>
+          <p>A modern shopping website with user-friendly design.</p>
+          <a href="../asset/demo project/NiceShop/index.html" target="_blank">Live Demo</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="../asset/images/Protofolio3.webp" alt="Project 3">
+        <div class="details">
+          <h3>Blog Platform</h3>
+          <p>A blogging platform built with clean UI and responsive design.</p>
+          <a href="../asset/demo project/Blogy/index.html" target="_blank">Live Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section contact">
+    <h2>Contact Me</h2>
+    <p>Let's collaborate on your next project. Reach out via email or social platforms:</p>
+    <a href="mailto:km162613@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://linkedin.com/in/YourProfile"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/YourProfile"><i class="fab fa-github"></i></a>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" aria-label="Site footer">
+    <!-- Waves -->
+    <div class="waves" aria-hidden="true">
+      <div class="wave" id="w1"></div>
+      <div class="wave" id="w2"></div>
+      <div class="wave" id="w3"></div>
+      <div class="wave" id="w4"></div>
+    </div>
+
+    <div class="footer-container">
+      <!-- ABOUT & SOCIAL -->
+      <div class="footer-col about" aria-labelledby="footer-about">
+        <div class="logo" id="footer-about">
+          <span class="logo-emoji">🌐</span>
+          <span class="gradient-text">Kuldeep Meena</span>
+        </div>
+        <p>Crafting modern, responsive, and high-performance websites. I focus on UI/UX, accessibility and measurable business results.</p>
+        <div class="social-icons" aria-label="social links">
+          <a href="#" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="footer-col" aria-labelledby="footer-links">
+        <h3 id="footer-links">Quick Links</h3>
+        <ul>
+          <li><i class="fas fa-angle-right"></i><a href="../src/kuldeepmeena.html">Home</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../src/about.html">About</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../src/service.html">Services</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../src/portfolio.html">Portfolio</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../src/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- SERVICES -->
+      <div class="footer-col" aria-labelledby="footer-services">
+        <h3 id="footer-services">Services</h3>
+        <ul>
+          <li><i class="fas fa-code"></i> Web Development</li>
+          <li><i class="fas fa-paint-brush"></i> UI/UX Design</li>
+          <li><i class="fas fa-briefcase"></i> Consulting</li>
+          <li><i class="fas fa-chart-line"></i> SEO & Marketing</li>
+        </ul>
+      </div>
+
+      <!-- CONTACT + NEWSLETTER -->
+      <div class="footer-col" aria-labelledby="footer-contact">
+        <h3 id="footer-contact">Contact</h3>
+        <ul>
+          <li><i class="fas fa-phone"></i> +91 9462591251</li>
+          <li><i class="fas fa-envelope"></i> km162613@gmail.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> 18, Laxmi Nagar, Jhotwara, Jaipur, Rajasthan</li>
+        </ul>
+
+        <div style="height:12px"></div>
+
+        <div class="newsletter" aria-label="Newsletter subscription">
+          <p><strong>Get updates</strong> — subscribe to my newsletter for tips, offers & short tutorials.</p>
+          <form id="newsletterForm" novalidate>
+            <input id="newsletterEmail" name="email" type="email" placeholder="Enter your email" aria-label="Email address" required>
+            <button class="subscribe" type="submit" aria-label="Subscribe"><i class="fas fa-paper-plane"></i> Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom" role="contentinfo">
+      <p>© 2025 <span class="gradient-text">Kuldeep Meena</span>. All Rights Reserved. • Designed with ❤️</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTopBtn" title="Back to top" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- Toast + confetti container -->
+  <div class="toast" id="toast" role="status" aria-live="polite"><i class="fas fa-check-circle"></i><span id="toastText">Subscribed!</span></div>
+  <div class="confetti-wrapper" id="confetti"></div>
+
+  <!-- Particles.js Library -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 120, "density": { "enable": true, "value_area": 500 } },
+        "color": { "value": ["#00aaff", "#ffd700", "#ff4d6d"] },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.7, "random": true },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": true, "distance": 120, "color": "#00aaff", "opacity": 0.3, "width": 1 },
+        "move": { "enable": true, "speed": 1.8, "direction": "none", "out_mode": "bounce" }
+      },
+      "interactivity": {
+        "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "repulse" } },
+        "modes": { "grab": { "distance": 180, "line_linked": { "opacity": 0.6 } }, "repulse": { "distance": 200, "duration": 0.4 } }
+      },
+      "retina_detect": true
+    });
+
+    // Hamburger toggle
+    function toggleMenu() {
+      document.querySelector(".nav-links").classList.toggle("show");
+    }
+
+    /* ---------------------------
+       Scroll-to-top button logic
+       --------------------------- */
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) scrollBtn.style.display = 'grid';
+      else scrollBtn.style.display = 'none';
+    });
+    scrollBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    scrollBtn.style.display = 'none';
+
+    /* ---------------------------
+       Newsletter form handling
+       --------------------------- */
+    const form = document.getElementById('newsletterForm');
+    const emailInput = document.getElementById('newsletterEmail');
+    const toast = document.getElementById('toast');
+    const toastText = document.getElementById('toastText');
+    const confettiWrap = document.getElementById('confetti');
+
+    function validEmail(email){
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function showToast(message = 'Subscribed!') {
+      toastText.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3600);
+    }
+
+    function spawnConfetti(duration = 1600, count = 22){
+      confettiWrap.innerHTML = '';
+      const colors = ['#FFCC00', '#FF6B6B', '#00E0E0', '#A76BFF', '#FFFFFF'];
+      for(let i=0;i<count;i++){
+        const el = document.createElement('span');
+        el.style.position = 'absolute';
+        el.style.left = (50 + (Math.random()*100 - 50)) + '%';
+        el.style.bottom = '0px';
+        el.style.width = (6 + Math.random()*10) + 'px';
+        el.style.height = el.style.width;
+        el.style.background = colors[Math.floor(Math.random()*colors.length)];
+        el.style.borderRadius = (Math.random()>0.5? '50%':'2px');
+        el.style.opacity = 0.95;
+        el.style.transform = 'translateY(0) rotate('+ (Math.random()*360) +'deg)';
+        el.style.pointerEvents = 'none';
+        el.style.zIndex = 99999;
+        el.style.transition = 'transform ' + (0.9 + Math.random()*0.9) + 's cubic-bezier(.2,.8,.3,1), opacity 0.9s';
+        confettiWrap.appendChild(el);
+        setTimeout(()=> {
+          const dx = (Math.random()*160) - 80;
+          const dy = - (120 + Math.random()*160);
+          const rot = (Math.random()*720 - 360);
+          el.style.transform = 'translate(' + dx + 'px,' + dy + 'px) rotate(' + rot + 'deg)';
+          el.style.opacity = 0;
+        }, 20 + Math.random()*120);
+      }
+      setTimeout(()=> confettiWrap.innerHTML = '', duration + 800);
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if(!validEmail(email)){
+        showToast('Please enter a valid email');
+        return;
+      }
+
+      try {
+        const key = 'km_newsletter_list_v1';
+        const existing = JSON.parse(localStorage.getItem(key) || '[]');
+        if(!existing.includes(email)){
+          existing.push(email);
+          localStorage.setItem(key, JSON.stringify(existing));
+        }
+      } catch(err){}
+
+      showToast('Thanks! You are subscribed ✨');
+      spawnConfetti(1800, 20);
+
+      const btn = form.querySelector('button');
+      btn.disabled = true;
+      btn.style.transform = 'translateY(-4px) scale(.98)';
+      setTimeout(()=> { btn.disabled=false; btn.style.transform=''; }, 1200);
+
+      emailInput.value = '';
+    });
+
+    emailInput.addEventListener('keydown', (e)=> {
+      if(e.key === 'Enter') form.dispatchEvent(new Event('submit', {cancelable:true, bubbles:true}));
+    });
+
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if(mq && mq.matches){
+      document.querySelectorAll('*').forEach(el => el.style.transition = 'none');
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(()=> {
+        if(window.scrollY > 200) scrollBtn.style.display='grid';
+      }, 700);
+    });
+  </script>
+</body>
+</html>
