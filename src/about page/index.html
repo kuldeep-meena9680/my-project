@@ -5,7 +5,7 @@
   <title>About Me - Kuldeep Meena</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/public/images/kuldeepmeenalogo.png">
+  <link rel="icon" type="image/png" href="../public/images/kuldeepmeenalogo.png">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
@@ -35,7 +35,7 @@
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(to right, #003580c9, #1e90ffcc), url('/public/images/About\ Page\ Background\ Image.jpg') no-repeat center/cover;
+      background: linear-gradient(to right, #003580c9, #1e90ffcc), url('../public/images/About\ Page\ Background\ Image.jpg') no-repeat center/cover;
       height:90vh; display:flex; justify-content:center; align-items:center;
       text-align:center; color:white; flex-direction:column; padding:20px;
     }
@@ -157,7 +157,8 @@
     .gradient-text{
       background: linear-gradient(270deg, var(--accent), #ff6b6b, #00e0e0, #a76bff);
       background-size: 800% 800%;
-      -webkit-background-clip: text;
+      -webkit-background-clip: text; /* for Chrome, Safari */
+      background-clip: text;         /* standard property */
       -webkit-text-fill-color: transparent;
       animation: gradientAnim 10s linear infinite;
       font-weight:700;
@@ -274,25 +275,25 @@
 
   <!-- Navbar -->
   <div class="navbar">
-    <div class="logo"><img src="/home page/index.html" alt="Logo"></div>
+    <div class="logo"><img src="../public/images/kuldeepmeenalogo.png" alt="Logo"></div>
     <i class="fas fa-bars hamburger" onclick="toggleMenu()"></i>
     <div class="nav-links">
-      <a href="/home page/index.html">Home</a>
-      <a href="/about page/index.html">About</a>
-      <a href="/service page/index.html">Services</a>
-      <a href="/protofolio page/index.html">Portfolio</a>
-      <a href="/contact page/index.html">Contact</a>
+      <a href="../home page/index.html">Home</a>
+      <a href="../about page/index.html">About</a>
+      <a href="../service page/index.html">Services</a>
+      <a href="../protofolio page/index.html">Portfolio</a>
+      <a href="../contact page/index.html">Contact</a>
     </div>
   </div>
 
   <!-- Hero Section -->
   <section class="hero">
-    <img src="/public/images/kuldip.png" alt="Profile Picture">
+    <img src="../public/images/kuldip.png" alt="Profile Picture">
     <h1>Hi, I'm Kuldeep Meena</h1>
     <p>Frontend Developer | UI/UX Enthusiast | Future Full-Stack Engineer</p>
     <div>
-      <a href="/public/images/resume.pdf" download class="btn">Download CV</a>
-      <a href="contact.html" class="btn">Contact Me</a>
+      <a href="../public/images/resume.pdf" download class="btn">Download CV</a>
+      <a href="../contact page/index.html" class="btn">Contact Me</a>
     </div>
   </section>
 
@@ -362,11 +363,11 @@
       <div class="footer-col" aria-labelledby="footer-links">
         <h3 id="footer-links">Quick Links</h3>
         <ul>
-          <li><i class="fas fa-angle-right"></i><a href="/home page/index.html">Home</a></li>
-          <li><i class="fas fa-angle-right"></i><a href="/about page/index.html">About</a></li>
-          <li><i class="fas fa-angle-right"></i><a href="/service page/index.html">Services</a></li>
-          <li><i class="fas fa-angle-right"></i><a href="/protofolio page/index.html">Portfolio</a></li>
-          <li><i class="fas fa-angle-right"></i><a href="/contact page/index.html">Contact</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../home page/index.html">Home</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../about page/index.html">About</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../service page/index.html">Services</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../protofolio page/index.html">Portfolio</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../contact page/index.html">Contact</a></li>
         </ul>
       </div>
 

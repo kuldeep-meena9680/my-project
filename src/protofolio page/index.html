@@ -5,7 +5,7 @@
   <title>Kuldeep Meena - Portfolio</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/public/images/kuldeepmeenalogo.png">
+  <link rel="icon" type="image/png" href="../public/images/kuldeepmeenalogo.png">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -44,7 +44,7 @@
     /* Hero Section */
     .hero {
       height:100vh;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('/public/images/Protofolio\ BG\ Image.jpg') center/cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('../public/images/Protofolio\ BG\ Image.jpg') center/cover no-repeat;
       display:flex; flex-direction:column; justify-content:center; align-items:center;
       text-align:center; color:#fff; padding:0 20px;
       animation: fadeIn 1.5s ease-in-out;
@@ -179,7 +179,8 @@
     .gradient-text{
       background: linear-gradient(270deg, var(--accent), #ff6b6b, #00e0e0, #a76bff);
       background-size: 800% 800%;
-      -webkit-background-clip: text;
+      -webkit-background-clip: text; /* for Chrome, Safari */
+      background-clip: text;         /* standard property */
       -webkit-text-fill-color: transparent;
       animation: gradientAnim 10s linear infinite;
       font-weight:700;
@@ -293,14 +294,14 @@
 
   <!-- Navbar -->
   <div class="navbar">
-    <div class="logo"><img src="/public/images/kuldeepmeenalogo.png" alt="Logo"></div>
+    <div class="logo"><img src="../public/images/kuldeepmeenalogo.png" alt="Logo"></div>
     <i class="fas fa-bars hamburger" onclick="toggleMenu()"></i>
     <div class="nav-links">
-      <a href="/home page/index.html">Home</a>
-      <a href="/about page/index.html">About</a>
-      <a href="/service page/index.html">Services</a>
-      <a href="/protofolio page/index.html">Portfolio</a>
-      <a href="/contact page/index.html">Contact</a>
+      <a href="../home page/index.html">Home</a>
+      <a href="../about page/index.html">About</a>
+      <a href="../service page/index.html">Services</a>
+      <a href="../protofolio page/index.html">Portfolio</a>
+      <a href="../contact page/index.html">Contact</a>
     </div>
   </div>
 
@@ -317,7 +318,7 @@
     <div class="about">
       <div class="profile-wrapper">
         <div id="particles-js"></div>
-        <img src="../asset/images/kuldip.png" alt="Kuldeep Meena">
+        <img src="../public/images/kuldip.png" alt="Kuldeep Meena">
       </div>
       <div class="about-text">
         <p>Hello! I'm <strong>Kuldeep Meena</strong>, a creative and passionate web developer specializing in modern and responsive websites. I love solving problems with clean, efficient code and designing user-friendly digital experiences.</p>
@@ -331,27 +332,27 @@
     <h2>My Projects</h2>
     <div class="projects">
       <div class="project-card">
-        <img src="../asset/images/Protofolio1.avif" alt="Project 1">
+        <img src="../public/images/Protofolio1.avif" alt="Project 1">
         <div class="details">
           <h3>Portfolio Website</h3>
           <p>A responsive personal portfolio showcasing my skills and projects.</p>
-          <a href="../asset/demo project/FolioOne/index.html" target="_blank">Live Demo</a>
+          <a href="../public/demo project/FolioOne/index.html" target="_blank">Live Demo</a>
         </div>
       </div>
       <div class="project-card">
-        <img src="../asset/images/Protofolio2.jpeg" alt="Project 2">
+        <img src="../public/images/Protofolio2.jpeg" alt="Project 2">
         <div class="details">
           <h3>E-Commerce Site</h3>
           <p>A modern shopping website with user-friendly design.</p>
-          <a href="../asset/demo project/NiceShop/index.html" target="_blank">Live Demo</a>
+          <a href="../public/demo project/NiceShop/index.html" target="_blank">Live Demo</a>
         </div>
       </div>
       <div class="project-card">
-        <img src="../asset/images/Protofolio3.webp" alt="Project 3">
+        <img src="../public/images/Protofolio3.webp" alt="Project 3">
         <div class="details">
           <h3>Blog Platform</h3>
           <p>A blogging platform built with clean UI and responsive design.</p>
-          <a href="../asset/demo project/Blogy/index.html" target="_blank">Live Demo</a>
+          <a href="../public/demo project/Blogy/index.html" target="_blank">Live Demo</a>
         </div>
       </div>
     </div>
@@ -396,11 +397,11 @@
       <div class="footer-col" aria-labelledby="footer-links">
         <h3 id="footer-links">Quick Links</h3>
         <ul>
-         <li><i class="fas fa-angle-right"></i><a href="/home page/index.html">Home</a></li>
-          <li><i class="fas fa-angle-right"></i><a href="/about page/index.html">About</a></li>
-          <li><i class="fas fa-angle-right"></i><a href="/service page/index.html">Services</a></li>
-          <li><i class="fas fa-angle-right"></i><a href="/protofolio page/index.html">Portfolio</a></li>
-          <li><i class="fas fa-angle-right"></i><a href="/contact page/index.html">Contact</a></li>
+         <li><i class="fas fa-angle-right"></i><a href="../home page/index.html">Home</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../about page/index.html">About</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../service page/index.html">Services</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../protofolio page/index.html">Portfolio</a></li>
+          <li><i class="fas fa-angle-right"></i><a href="../contact page/index.html">Contact</a></li>
         </ul>
       </div>
 
